@@ -12,7 +12,7 @@
         compatible = "zmk,behavior-macro"; \
         #binding-cells = <0>; \
         bindings = <m_bindings>; \
-    }
+    };
 //Nicola END
 
 &mt {
