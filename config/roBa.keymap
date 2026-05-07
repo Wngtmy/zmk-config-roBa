@@ -5,7 +5,17 @@
 #define ZMK_POINTING_DEFAULT_SCRL_VAL 80
 #include <dt-bindings/zmk/pointing.h>
 
-
+//Nicola
+// マクロ定義を簡略化するテンプレート
+#define NICOLA_M(name, keys) \
+    name: name { \
+        compatible = "zmk,behavior-macro"; \
+        #binding-cells = <0>; \
+        wait-ms = <0>; \
+        tap-ms = <0>; \
+        bindings = <keys>; \
+    }
+//Nicola END
 
 &mt {
     flavor = "balanced";
@@ -13,8 +23,8 @@
 };
 
 &trackball {
-    automouse-layer = <4>;
-    scroll-layers = <5>;
+    automouse-layer = <7>;
+    scroll-layers = <8>;
 
     // arrows {
     //     layers = <3>;
@@ -29,38 +39,53 @@
     // };
 };
 
+/*Key position map for combos
+ 0  1  2  3  4          5  6  7  8  9
+10 11 12 13 14 15   16 17 18 19 20 21
+22 23 24 25 26 27   28 29 30 31 32 33
+34 35 36 37 38 39   40 41          42
+*/
+
+
 / {
     combos {
         compatible = "zmk,combos";
 
         tab {
             bindings = <&kp TAB>;
-            key-positions = <11 12>;
+            key-positions = <0 1>;
         };
 
-        shift_tab {
-            bindings = <&kp LS(TAB)>;
-            key-positions = <12 13>;
+        auto_caps {
+            bindings = <&caps_word>;
+            key-positions = <6 7>;
         };
 
-        muhennkann {
-            bindings = <&to_layer_0 INT_MUHENKAN>;
-            key-positions = <11 10>;
+        auto_brac1 {
+            bindings = <&brac1>;
+            key-positions = <11 20>;
         };
-
-        double_quotation {
-            bindings = <&kp DOUBLE_QUOTES>;
-            key-positions = <20 21>;
-        };
-
-        eq {
-            bindings = <&kp EQUAL>;
-            key-positions = <24 25>;
+        
+        auto_brac2 {
+            bindings = <&brac2>;
+            key-positions = <23 32>;
         };
 
         m_del {
             bindings = <&kp DEL>;
             key-positions = <8 9>;
+        };
+
+        combo_kana {
+            timeout-ms = <50>;
+            key-positions = <18 19>; 
+            bindings = <&to_kana>;
+        };
+
+        combo_alpha {
+            timeout-ms = <50>;
+            key-positions = <12 13>; 
+            bindings = <&to_alpha>;
         };
     };
 
@@ -75,9 +100,110 @@
         brac1: brac1 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&none>;
+            bindings = <&kp LEFT_BRACKET &kp RIGHT_BRACKET &kp LEFT>;
             label = "BRAC1";
         };
+
+        brac2: brac2 {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LEFT_BRACE &kp RIGHT_BRACE &kp LEFT>;
+            label = "BRAC2";
+        };
+
+
+        //Nicola
+        // NICOLA_M(識別名, <送信するキーコード>)
+        NICOLA_M(n_a,   <&kp A>)            // あ
+        NICOLA_M(n_i,   <&kp I>)            // い
+        NICOLA_M(n_u,   <&kp U>)            // う
+        NICOLA_M(n_e,   <&kp E>)            // え
+        NICOLA_M(n_o,   <&kp O>)            // お
+        NICOLA_M(n_ka,  <&kp K &kp A>)      // か
+        NICOLA_M(n_ki,  <&kp K &kp I>)      // き
+        NICOLA_M(n_ku,  <&kp K &kp U>)      // く
+        NICOLA_M(n_ke,  <&kp K &kp E>)      // け
+        NICOLA_M(n_ko,  <&kp K &kp O>)      // こ
+        NICOLA_M(n_sa,  <&kp S &kp A>)      // さ
+        NICOLA_M(n_si,  <&kp S &kp I>)      // し
+        NICOLA_M(n_su,  <&kp S &kp U>)      // す
+        NICOLA_M(n_se,  <&kp S &kp E>)      // せ
+        NICOLA_M(n_so,  <&kp S &kp O>)      // そ
+        NICOLA_M(n_ta,  <&kp T &kp A>)      // た
+        NICOLA_M(n_ti,  <&kp T &kp I>)      // ち
+        NICOLA_M(n_tu,  <&kp T &kp U>)      // つ
+        NICOLA_M(n_te,  <&kp T &kp E>)      // て
+        NICOLA_M(n_to,  <&kp T &kp O>)      // と
+        NICOLA_M(n_na,  <&kp N &kp A>)      // な
+        NICOLA_M(n_ni,  <&kp N &kp I>)      // に
+        NICOLA_M(n_nu,  <&kp N &kp U>)      // ぬ
+        NICOLA_M(n_ne,  <&kp N &kp E>)      // ね
+        NICOLA_M(n_no,  <&kp N &kp O>)      // の
+        NICOLA_M(n_ha,  <&kp H &kp A>)      // は
+        NICOLA_M(n_hi,  <&kp H &kp I>)      // ひ
+        NICOLA_M(n_hu,  <&kp H &kp U>)      // ふ
+        NICOLA_M(n_he,  <&kp H &kp E>)      // へ
+        NICOLA_M(n_ho,  <&kp H &kp O>)      // ほ
+        NICOLA_M(n_ma,  <&kp M &kp A>)      // ま
+        NICOLA_M(n_mi,  <&kp M &kp I>)      // み
+        NICOLA_M(n_mu,  <&kp M &kp U>)      // む
+        NICOLA_M(n_me,  <&kp M &kp E>)      // め
+        NICOLA_M(n_mo,  <&kp M &kp O>)      // も
+        NICOLA_M(n_ya,  <&kp Y &kp A>)      // や
+        NICOLA_M(n_yu,  <&kp Y &kp U>)      // ゆ
+        NICOLA_M(n_yo,  <&kp Y &kp O>)      // よ
+        NICOLA_M(n_ra,  <&kp R &kp A>)      // ら
+        NICOLA_M(n_ri,  <&kp R &kp I>)      // り
+        NICOLA_M(n_ru,  <&kp R &kp U>)      // る
+        NICOLA_M(n_re,  <&kp R &kp E>)      // れ
+        NICOLA_M(n_ro,  <&kp R &kp O>)      // ろ
+        NICOLA_M(n_wa,  <&kp W &kp A>)      // わ
+        NICOLA_M(n_wo,  <&kp W &kp O>)      // を
+        NICOLA_M(n_nn,  <&kp N &kp N>)      // ん
+
+        NICOLA_M(n_ga,  <&kp G &kp A>)      // が
+        NICOLA_M(n_gi,  <&kp G &kp I>)      // ぎ
+        NICOLA_M(n_gu,  <&kp G &kp U>)      // ぐ
+        NICOLA_M(n_ge,  <&kp G &kp E>)      // げ
+        NICOLA_M(n_go,  <&kp G &kp O>)      // ご
+        NICOLA_M(n_za,  <&kp Z &kp A>)      // ざ
+        NICOLA_M(n_zi,  <&kp Z &kp I>)      // じ
+        NICOLA_M(n_zu,  <&kp Z &kp U>)      // ず
+        NICOLA_M(n_ze,  <&kp Z &kp E>)      // ぜ
+        NICOLA_M(n_zo,  <&kp Z &kp O>)      // ぞ
+        NICOLA_M(n_da,  <&kp D &kp A>)      // だ
+        NICOLA_M(n_di,  <&kp D &kp I>)      // ぢ
+        NICOLA_M(n_du,  <&kp D &kp U>)      // づ
+        NICOLA_M(n_de,  <&kp D &kp E>)      // で
+        NICOLA_M(n_do,  <&kp D &kp O>)      // ど
+        NICOLA_M(n_ba,  <&kp B &kp A>)      // ば
+        NICOLA_M(n_bi,  <&kp B &kp I>)      // び
+        NICOLA_M(n_bu,  <&kp B &kp U>)      // ぶ
+        NICOLA_M(n_be,  <&kp B &kp E>)      // べ
+        NICOLA_M(n_bo,  <&kp B &kp O>)      // ぼ
+
+        NICOLA_M(n_pa,  <&kp P &kp A>)      // ぱ
+        NICOLA_M(n_pi,  <&kp P &kp I>)      // ぴ
+        NICOLA_M(n_pu,  <&kp P &kp U>)      // ぷ
+        NICOLA_M(n_pe,  <&kp P &kp E>)      // ぺ
+        NICOLA_M(n_po,  <&kp P &kp O>)      // ぽ
+
+        NICOLA_M(n_vu,  <&kp V &kp U>)      // ヴ
+
+        NICOLA_M(n_la, <&kp L &kp A>) // ぁ
+        NICOLA_M(n_li, <&kp L &kp I>) // ぃ
+        NICOLA_M(n_lu, <&kp L &kp U>) // ぅ
+        NICOLA_M(n_le, <&kp L &kp E>) // ぇ
+        NICOLA_M(n_lo, <&kp L &kp O>) // ぉ
+        NICOLA_M(n_lya, <&kp L &kp Y &kp A>) // ゃ
+        NICOLA_M(n_lyu, <&kp L &kp Y &kp U>) // ゅ
+        NICOLA_M(n_lyo, <&kp L &kp Y &kp O>) // ょ
+        
+        // レイヤー切り替え用
+        NICOLA_M(to_kana, <&tog 1 &kp LANG1>)
+        NICOLA_M(to_alpha, <&tog 0 &kp LANG2>)
+        //Nicola END
+
     };
 
     behaviors {
@@ -97,6 +223,26 @@
            bindings = <&msc SCRL_DOWN>, <&msc SCRL_UP>;
            tap-ms = <20>;
        };
+
+       //Nicola
+       ltq: layer_tap_quick {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            tapping-term-ms = <150>;
+            quick-tap-ms = <150>; // 押しっぱなしでのレイヤー維持を許容
+            flavor = "hold-preferred";
+            bindings = <&mo>, <&kp>;
+        };
+
+        // Define new hold-tap: tap=macro, hold=layer
+        lt_macro: layer_tap_macro {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            flavor = "tap-preferred";
+            tapping-term-ms = <200>;
+            bindings = <&mo>, <&my_macro>; // Hold=Layer, Tap=Macro
+        };
+        //Nicola END
     };
 
     keymap {
@@ -104,13 +250,42 @@
 
         default_layer {
             bindings = <
-&kp Q             &kp W         &kp E         &kp R                        &kp T                                                            &kp Y        &kp U  &lt 5 I    &kp O    &kp P
-&kp A             &kp S         &kp D         &kp F                        &kp G                 &kp LS(LG(S))               &kp MINUS      &kp H        &kp J  &kp K      &kp L    &mt RCTRL SEMICOLON
-&mt LEFT_SHIFT Z  &kp X         &kp C         &kp V                        &kp B                 &kp COLON                   &kp SEMICOLON  &kp N        &kp M  &kp COMMA  &kp DOT  &kp SLASH
-&kp LCTRL         &kp LEFT_WIN  &kp LEFT_ALT  &lt_to_layer_0 2 LANGUAGE_2  &mt LEFT_SHIFT SPACE  &lt_to_layer_0 3 LANG1      &kp BACKSPACE  &lt 3 ENTER                             &lt 6 NON_US_BACKSLASH
+&kp Q             &kp W         &kp E         &kp R                        &kp T                                                              &kp Y        &kp U  &kp I      &kp O    &kp P
+&kp A             &kp S         &kp D         &kp F                        &kp G                 &kp LS(LG(S))               &kp LC(LA(DEL))  &kp H        &kp J  &lt 8 K    &kp L    &mt RCTRL SEMICOLON
+&kp Z             &kp X         &kp C         &kp V                        &kp B                 &lt 9 LC(Y)                 &kp DEL          &kp N        &kp M  &kp COMMA  &kp DOT  &kp SLASH
+&kp LCTRL         &kp LEFT_WIN  &kp LEFT_ALT  &lt_to_layer_0 5 LANGUAGE_2  &mt LEFT_SHIFT SPACE  &lt_to_layer_0 6 LANG1      &lt 6 BACKSPACE  &lt 6 ENTER                             &kp NON_US_BACKSLASH
             >;
 
             sensor-bindings = <&encoder_msc_down_up>;
+        };
+
+        NICOLA {
+            bindings = <
+&kp DOT       &n_ka      &n_ta      &n_ko     &n_sa                                      &n_ra       &n_ti     &n_ku                &n_tu    &kp COMMA
+&n_u          &n_si      &n_te      &n_ke     &n_se         &trans            &trans     &n_ha       &n_to     &lt_macro 8 n_ki     &n_i     &lt_macro 0 n_nn
+&kp DOT       &n_hi      &n_su      &n_hu     &n_he         &trans            &trans     &n_me       &n_so     &n_ne                &n_ho    &kp SLASH
+&trans        &trans     &trans     &trans    &ltq 2 SPACE  &trans            &trans     &ltq 3 ENTER                                        &trans
+            >;
+
+            sensor-bindings = <&encoder_msc_down_up>;
+        };
+
+        NICOLA_L {
+            bindings = <
+&n_la      &n_e       &n_ri      &n_lya     &n_re                                   &n_pa       &n_di     &n_gu     &n_du     &n_pi
+&n_wo      &n_a       &n_na      &n_lyu     &n_mo      &trans            &trans     &n_ba       &n_do     &n_gi     &n_po     &trans
+&n_lu      &kp MINUS  &n_ro      &n_ya      &n_li      &trans            &trans     &n_pu       &n_zo     &n_pe     &n_bo     &kp LS(SLASH)
+&trans     &trans     &trans     &trans     &trans     &trans            &trans     &trans                                    &trans
+            >;
+        };
+
+        NICOLA_R {
+            bindings = <
+&kp DOT    &n_ga      &n_da      &n_go      &n_za                                   &n_yo       &n_ni     &n_ru     &n_ma     &n_le
+&n_vu      &n_zi      &n_de      &n_ge      &n_ze      &trans            &trans     &n_mi       &n_o     &n_no     &n_lyo     &n_ltu
+&kp DOT    &n_bi      &n_zu      &n_bu      &n_be      &trans            &trans     &n_nu       &n_yu     &n_mu     &n_wa     &n_lo
+&trans     &trans     &trans     &trans     &trans     &trans            &trans     &trans                                    &trans
+            >;
         };
 
         FUNCTION {
@@ -133,20 +308,20 @@
 
         ARROW {
             bindings = <
-&kp F1   &kp F2                  &kp F3            &kp F4                   &kp F5                       &trans    &trans    &kp UP    &trans     &kp LS(SQT)
-&kp F6   &kp F7                  &kp F8            &kp F9                   &kp F10  &trans      &trans  &kp HOME  &kp LEFT  &kp DOWN  &kp RIGHT  &kp SQT
-&kp F11  &kp LG(LS(LEFT_ARROW))  &kp LG(UP_ARROW)  &kp LG(LS(RIGHT_ARROW))  &trans   &trans      &trans  &kp END   &mkp MB4  &trans    &mkp MB5   &kp LEFT_BRACE
-&kp F12  &trans                  &trans            &trans                   &trans   &trans      &trans  &trans                                   &kp RIGHT_BRACE
+&kp F1   &kp F2                  &kp F3            &kp F4           &kp F5                       &trans    &kp LS(LEFT)    &kp UP    &kp LS(RIGHT)     &kp LS(SQT)
+&kp F6   &kp F7                  &kp F8            &kp F9           &kp F10  &trans      &trans  &kp HOME  &kp LEFT        &kp DOWN  &kp RIGHT         &kp SQT
+&kp F11  &kp LG(LEFT_ARROW)  &kp LG(UP_ARROW)  &kp LG(RIGHT_ARROW)  &trans   &trans      &trans  &kp END   &mkp MB4        &trans    &mkp MB5          &kp LEFT_BRACE
+&kp F12  &trans                  &trans            &trans           &trans   &trans      &trans  &trans                                                &kp RIGHT_BRACE
             >;
 
-            sensor-bindings = <&inc_dec_kp LC(PAGE_UP) LC(PAGE_DOWN)>;
+            sensor-bindings = <&inc_dec_kp LC(PAGE_DOWN) LC(PAGE_UP)>;
         };
 
         MOUSE {
             bindings = <
 &trans  &trans  &trans  &trans  &trans                      &trans  &trans    &trans    &trans    &trans
-&trans  &trans  &trans  &trans  &trans  &trans      &trans  &trans  &mkp MB1  &mkp MB3  &mkp MB2  &trans
-&trans  &trans  &trans  &trans  &trans  &trans      &trans  &trans  &trans    &trans    &trans    &trans
+&trans  &trans  &trans  &trans  &trans  &trans      &trans  &trans  &mkp MB1  &trans    &mkp MB2  &trans
+&trans  &trans  &trans  &trans  &trans  &trans      &trans  &trans  &trans    &mkp MB3  &trans    &trans
 &trans  &trans  &trans  &trans  &trans  &trans      &trans  &trans                                &trans
             >;
         };
@@ -160,12 +335,12 @@
             >;
         };
 
-        layer_6 {
+        layer_9 {
             bindings = <
 &trans  &trans        &trans        &trans        &trans                           &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4
-&trans  &trans        &trans        &trans        &trans  &trans      &trans       &trans        &trans        &trans        &trans        &trans
+&trans  &trans        &trans        &trans        &trans  &trans      &trans       &trans        &trans        &trans        &trans        &bt BT_CLR_ALL
 &trans  &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &trans  &trans      &bootloader  &trans        &trans        &trans        &trans        &bt BT_CLR
-&trans  &trans        &trans        &trans        &trans  &trans      &trans       &trans                                                  &bt BT_CLR_ALL
+&trans  &trans        &trans        &trans        &trans  &trans      &trans       &trans                                                  &trans
             >;
         };
     };
