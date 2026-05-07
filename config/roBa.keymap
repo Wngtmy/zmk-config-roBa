@@ -233,7 +233,7 @@
             bindings = <&mo>, <&kp>;
         };
 
-        dly: nicola_delay {
+/*        dly: nicola_delay {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <1>;
             tapping-term-ms = <150>;
@@ -242,6 +242,7 @@
             bindings = <&macro_tap>;
             delay-decide-ms = <100>;
         };
+*/
 
         // Define new hold-tap: tap=macro, hold=layer
         lt_macro: layer_tap_macro {
