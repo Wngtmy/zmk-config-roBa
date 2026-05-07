@@ -193,6 +193,7 @@
         NICOLA_M(n_lu, &kp L &kp U) // ぅ
         NICOLA_M(n_le, &kp L &kp E) // ぇ
         NICOLA_M(n_lo, &kp L &kp O) // ぉ
+        NICOLA_M(n_ltu, &kp L &kp T &kp U) // っ
         NICOLA_M(n_lya, &kp L &kp Y &kp A) // ゃ
         NICOLA_M(n_lyu, &kp L &kp Y &kp U) // ゅ
         NICOLA_M(n_lyo, &kp L &kp Y &kp O) // ょ
