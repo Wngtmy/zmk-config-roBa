@@ -12,7 +12,7 @@
         timeout-ms = <TIMEOUT>; \
         key-positions = <KEYPOS>; \
         bindings = <BINDINGS>; \
-        layers = <1>; \
+        layers = <NICOLA>; \
     };
 
 // マクロ定義を簡略化するテンプレート
