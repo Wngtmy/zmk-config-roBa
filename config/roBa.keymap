@@ -332,10 +332,10 @@
 
         NICOLA {
             bindings = <
-&kp DOT       &n_ka      &n_ta      &n_ko     &n_sa                                      &n_ra       &n_ti     &n_ku    &n_tu    &kp COMMA
-&n_u          &n_si      &n_te      &n_ke     &n_se         &trans            &trans     &n_ha       &n_to     &n_ki    &n_i     &n_nn
-&kp DOT       &n_hi      &n_su      &n_hu     &n_he         &trans            &trans     &n_me       &n_so     &n_ne    &n_ho    &kp SLASH
-&trans        &trans     &trans     &trans    &kp SPACE     &trans            &trans     &kp ENTER                               &trans
+&kp DOT                  &n_ka      &n_ta      &n_ko     &n_sa                                      &n_ra       &n_ti     &n_ku    &n_tu    &kp COMMA
+&n_u                     &n_si      &n_te      &n_ke     &n_se         &trans            &trans     &n_ha       &n_to     &n_ki    &n_i     &n_nn
+&kp DOT                  &n_hi      &n_su      &n_hu     &n_he         &trans            &trans     &n_me       &n_so     &n_ne    &n_ho    &kp SLASH
+&lt_to_layer_0 0 LCTRL   &trans     &trans     &trans    &kp SPACE     &trans            &trans     &kp ENTER                               &lt_to_layer_0 0 LCTRL
             >;
 
             sensor-bindings = <&encoder_msc_down_up>;
