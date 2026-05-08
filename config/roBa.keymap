@@ -9,6 +9,7 @@
 // シフトキー入力をコンボで実現する
 #define COMBO_NICOLA(NAME, BINDINGS, KEYPOS, TIMEOUT) \
     combo_##NAME { \
+        compatible = "zmk,combos"; \
         timeout-ms = <TIMEOUT>; \
         key-positions = <KEYPOS>; \
         bindings = <BINDINGS>; \
