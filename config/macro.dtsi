@@ -1,0 +1,98 @@
+#define NICOLA_M(name, m_bindings) \
+    name: name { \
+        compatible = "zmk,behavior-macro"; \
+        #binding-cells = <0>; \
+        bindings = <m_bindings>; \
+    };
+
+        
+        // NICOLA_M(識別名, <送信するキーコード>)
+        NICOLA_M(n_a, &kp A)            // あ
+        NICOLA_M(n_i, &kp I)            // い
+        NICOLA_M(n_u, &kp U)            // う
+        NICOLA_M(n_e, &kp E)            // え
+        NICOLA_M(n_o,   &kp O)            // お
+        NICOLA_M(n_ka,  &kp K &kp A)      // か
+        NICOLA_M(n_ki,  &kp K &kp I)      // き
+        NICOLA_M(n_ku,  &kp K &kp U)      // く
+        NICOLA_M(n_ke,  &kp K &kp E)      // け
+        NICOLA_M(n_ko,  &kp K &kp O)      // こ
+        NICOLA_M(n_sa,  &kp S &kp A)      // さ
+        NICOLA_M(n_si,  &kp S &kp I)      // し
+        NICOLA_M(n_su,  &kp S &kp U)      // す
+        NICOLA_M(n_se,  &kp S &kp E)      // せ
+        NICOLA_M(n_so,  &kp S &kp O)      // そ
+        NICOLA_M(n_ta,  &kp T &kp A)      // た
+        NICOLA_M(n_ti,  &kp T &kp I)      // ち
+        NICOLA_M(n_tu,  &kp T &kp U)      // つ
+        NICOLA_M(n_te,  &kp T &kp E)      // て
+        NICOLA_M(n_to,  &kp T &kp O)      // と
+        NICOLA_M(n_na,  &kp N &kp A)      // な
+        NICOLA_M(n_ni,  &kp N &kp I)      // に
+        NICOLA_M(n_nu,  &kp N &kp U)      // ぬ
+        NICOLA_M(n_ne,  &kp N &kp E)      // ね
+        NICOLA_M(n_no,  &kp N &kp O)      // の
+        NICOLA_M(n_ha,  &kp H &kp A)      // は
+        NICOLA_M(n_hi,  &kp H &kp I)      // ひ
+        NICOLA_M(n_hu,  &kp H &kp U)      // ふ
+        NICOLA_M(n_he,  &kp H &kp E)      // へ
+        NICOLA_M(n_ho,  &kp H &kp O)      // ほ
+        NICOLA_M(n_ma,  &kp M &kp A)      // ま
+        NICOLA_M(n_mi,  &kp M &kp I)      // み
+        NICOLA_M(n_mu,  &kp M &kp U)      // む
+        NICOLA_M(n_me,  &kp M &kp E)      // め
+        NICOLA_M(n_mo,  &kp M &kp O)      // も
+        NICOLA_M(n_ya,  &kp Y &kp A)      // や
+        NICOLA_M(n_yu,  &kp Y &kp U)      // ゆ
+        NICOLA_M(n_yo,  &kp Y &kp O)      // よ
+        NICOLA_M(n_ra,  &kp R &kp A)      // ら
+        NICOLA_M(n_ri,  &kp R &kp I)      // り
+        NICOLA_M(n_ru,  &kp R &kp U)      // る
+        NICOLA_M(n_re,  &kp R &kp E)      // れ
+        NICOLA_M(n_ro,  &kp R &kp O)      // ろ
+        NICOLA_M(n_wa,  &kp W &kp A)      // わ
+        NICOLA_M(n_wo,  &kp W &kp O)      // を
+        NICOLA_M(n_nn,  &kp N &kp N)      // ん
+
+        NICOLA_M(n_ga,  &kp G &kp A)      // が
+        NICOLA_M(n_gi,  &kp G &kp I)      // ぎ
+        NICOLA_M(n_gu,  &kp G &kp U)      // ぐ
+        NICOLA_M(n_ge,  &kp G &kp E)      // げ
+        NICOLA_M(n_go,  &kp G &kp O)      // ご
+        NICOLA_M(n_za,  &kp Z &kp A)      // ざ
+        NICOLA_M(n_zi,  &kp Z &kp I)      // じ
+        NICOLA_M(n_zu,  &kp Z &kp U)      // ず
+        NICOLA_M(n_ze,  &kp Z &kp E)      // ぜ
+        NICOLA_M(n_zo,  &kp Z &kp O)      // ぞ
+        NICOLA_M(n_da,  &kp D &kp A)      // だ
+        NICOLA_M(n_di,  &kp D &kp I)      // ぢ
+        NICOLA_M(n_du,  &kp D &kp U)      // づ
+        NICOLA_M(n_de,  &kp D &kp E)      // で
+        NICOLA_M(n_do,  &kp D &kp O)      // ど
+        NICOLA_M(n_ba,  &kp B &kp A)      // ば
+        NICOLA_M(n_bi,  &kp B &kp I)      // び
+        NICOLA_M(n_bu,  &kp B &kp U)      // ぶ
+        NICOLA_M(n_be,  &kp B &kp E)      // べ
+        NICOLA_M(n_bo,  &kp B &kp O)      // ぼ
+
+        NICOLA_M(n_pa,  &kp P &kp A)      // ぱ
+        NICOLA_M(n_pi,  &kp P &kp I)      // ぴ
+        NICOLA_M(n_pu,  &kp P &kp U)      // ぷ
+        NICOLA_M(n_pe,  &kp P &kp E)      // ぺ
+        NICOLA_M(n_po,  &kp P &kp O)      // ぽ
+
+        NICOLA_M(n_vu,  &kp V &kp U)      // ヴ
+
+        NICOLA_M(n_la, &kp L &kp A) // ぁ
+        NICOLA_M(n_li, &kp L &kp I) // ぃ
+        NICOLA_M(n_lu, &kp L &kp U) // ぅ
+        NICOLA_M(n_le, &kp L &kp E) // ぇ
+        NICOLA_M(n_lo, &kp L &kp O) // ぉ
+        NICOLA_M(n_ltu, &kp L &kp T &kp U) // っ
+        NICOLA_M(n_lya, &kp L &kp Y &kp A) // ゃ
+        NICOLA_M(n_lyu, &kp L &kp Y &kp U) // ゅ
+        NICOLA_M(n_lyo, &kp L &kp Y &kp O) // ょ
+        
+        // レイヤー切り替え用
+        NICOLA_M(to_kana, &to 1 &kp LANG1)
+        NICOLA_M(to_alpha, &to 0 &kp LANG2)

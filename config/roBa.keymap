@@ -1,28 +1,9 @@
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/keys.h>
-
 #define ZMK_POINTING_DEFAULT_SCRL_VAL 80
 #include <dt-bindings/zmk/pointing.h>
 
-//Nicola
-// シフトキー入力をコンボで実現する
-#define COMBO_NICOLA(c_name, c_bindings, c_keypos, c_timeout) \
-    combo_##c_name { \
-        timeout-ms = <c_timeout>; \
-        key-positions = <c_keypos>; \
-        bindings = <c_bindings>; \
-        layers = <1>; \
-    };
-
-// マクロ定義を簡略化するテンプレート
-#define NICOLA_M(name, m_bindings) \
-    name: name { \
-        compatible = "zmk,behavior-macro"; \
-        #binding-cells = <0>; \
-        bindings = <m_bindings>; \
-    };
-//Nicola END
 
 &mt {
     flavor = "balanced";
@@ -47,7 +28,29 @@
 };
 
 / {
+    behaviors {
+        lt_to_layer_0: lt_to_layer_0 {
+            compatible = "zmk,behavior-hold-tap";
+            label = "LAYER_TAP_TO_0";
+            bindings = <&mo>, <&to_layer_0>;
+
+            #binding-cells = <2>;
+            tapping-term-ms = <200>;
+        };
+
+        encoder_msc_down_up: encoder_msc_down_up {
+           compatible = "zmk,behavior-sensor-rotate";
+           label = "ENCODER_MSC_DOWN_UP";
+           #sensor-binding-cells = <0>;
+           bindings = <&msc SCRL_DOWN>, <&msc SCRL_UP>;
+           tap-ms = <20>;
+       };
+
+    };
+
     macros {
+        #include macro.dtsi
+        
         to_layer_0: to_layer_0 {
             compatible = "zmk,behavior-macro-one-param";
             #binding-cells = <1>;
@@ -69,120 +72,6 @@
             label = "BRAC2";
         };
 
-
-        //Nicola
-        // NICOLA_M(識別名, <送信するキーコード>)
-        NICOLA_M(n_a, &kp A)            // あ
-        NICOLA_M(n_i, &kp I)            // い
-        NICOLA_M(n_u, &kp U)            // う
-        NICOLA_M(n_e, &kp E)            // え
-        NICOLA_M(n_o,   &kp O)            // お
-        NICOLA_M(n_ka,  &kp K &kp A)      // か
-        NICOLA_M(n_ki,  &kp K &kp I)      // き
-        NICOLA_M(n_ku,  &kp K &kp U)      // く
-        NICOLA_M(n_ke,  &kp K &kp E)      // け
-        NICOLA_M(n_ko,  &kp K &kp O)      // こ
-        NICOLA_M(n_sa,  &kp S &kp A)      // さ
-        NICOLA_M(n_si,  &kp S &kp I)      // し
-        NICOLA_M(n_su,  &kp S &kp U)      // す
-        NICOLA_M(n_se,  &kp S &kp E)      // せ
-        NICOLA_M(n_so,  &kp S &kp O)      // そ
-        NICOLA_M(n_ta,  &kp T &kp A)      // た
-        NICOLA_M(n_ti,  &kp T &kp I)      // ち
-        NICOLA_M(n_tu,  &kp T &kp U)      // つ
-        NICOLA_M(n_te,  &kp T &kp E)      // て
-        NICOLA_M(n_to,  &kp T &kp O)      // と
-        NICOLA_M(n_na,  &kp N &kp A)      // な
-        NICOLA_M(n_ni,  &kp N &kp I)      // に
-        NICOLA_M(n_nu,  &kp N &kp U)      // ぬ
-        NICOLA_M(n_ne,  &kp N &kp E)      // ね
-        NICOLA_M(n_no,  &kp N &kp O)      // の
-        NICOLA_M(n_ha,  &kp H &kp A)      // は
-        NICOLA_M(n_hi,  &kp H &kp I)      // ひ
-        NICOLA_M(n_hu,  &kp H &kp U)      // ふ
-        NICOLA_M(n_he,  &kp H &kp E)      // へ
-        NICOLA_M(n_ho,  &kp H &kp O)      // ほ
-        NICOLA_M(n_ma,  &kp M &kp A)      // ま
-        NICOLA_M(n_mi,  &kp M &kp I)      // み
-        NICOLA_M(n_mu,  &kp M &kp U)      // む
-        NICOLA_M(n_me,  &kp M &kp E)      // め
-        NICOLA_M(n_mo,  &kp M &kp O)      // も
-        NICOLA_M(n_ya,  &kp Y &kp A)      // や
-        NICOLA_M(n_yu,  &kp Y &kp U)      // ゆ
-        NICOLA_M(n_yo,  &kp Y &kp O)      // よ
-        NICOLA_M(n_ra,  &kp R &kp A)      // ら
-        NICOLA_M(n_ri,  &kp R &kp I)      // り
-        NICOLA_M(n_ru,  &kp R &kp U)      // る
-        NICOLA_M(n_re,  &kp R &kp E)      // れ
-        NICOLA_M(n_ro,  &kp R &kp O)      // ろ
-        NICOLA_M(n_wa,  &kp W &kp A)      // わ
-        NICOLA_M(n_wo,  &kp W &kp O)      // を
-        NICOLA_M(n_nn,  &kp N &kp N)      // ん
-
-        NICOLA_M(n_ga,  &kp G &kp A)      // が
-        NICOLA_M(n_gi,  &kp G &kp I)      // ぎ
-        NICOLA_M(n_gu,  &kp G &kp U)      // ぐ
-        NICOLA_M(n_ge,  &kp G &kp E)      // げ
-        NICOLA_M(n_go,  &kp G &kp O)      // ご
-        NICOLA_M(n_za,  &kp Z &kp A)      // ざ
-        NICOLA_M(n_zi,  &kp Z &kp I)      // じ
-        NICOLA_M(n_zu,  &kp Z &kp U)      // ず
-        NICOLA_M(n_ze,  &kp Z &kp E)      // ぜ
-        NICOLA_M(n_zo,  &kp Z &kp O)      // ぞ
-        NICOLA_M(n_da,  &kp D &kp A)      // だ
-        NICOLA_M(n_di,  &kp D &kp I)      // ぢ
-        NICOLA_M(n_du,  &kp D &kp U)      // づ
-        NICOLA_M(n_de,  &kp D &kp E)      // で
-        NICOLA_M(n_do,  &kp D &kp O)      // ど
-        NICOLA_M(n_ba,  &kp B &kp A)      // ば
-        NICOLA_M(n_bi,  &kp B &kp I)      // び
-        NICOLA_M(n_bu,  &kp B &kp U)      // ぶ
-        NICOLA_M(n_be,  &kp B &kp E)      // べ
-        NICOLA_M(n_bo,  &kp B &kp O)      // ぼ
-
-        NICOLA_M(n_pa,  &kp P &kp A)      // ぱ
-        NICOLA_M(n_pi,  &kp P &kp I)      // ぴ
-        NICOLA_M(n_pu,  &kp P &kp U)      // ぷ
-        NICOLA_M(n_pe,  &kp P &kp E)      // ぺ
-        NICOLA_M(n_po,  &kp P &kp O)      // ぽ
-
-        NICOLA_M(n_vu,  &kp V &kp U)      // ヴ
-
-        NICOLA_M(n_la, &kp L &kp A) // ぁ
-        NICOLA_M(n_li, &kp L &kp I) // ぃ
-        NICOLA_M(n_lu, &kp L &kp U) // ぅ
-        NICOLA_M(n_le, &kp L &kp E) // ぇ
-        NICOLA_M(n_lo, &kp L &kp O) // ぉ
-        NICOLA_M(n_ltu, &kp L &kp T &kp U) // っ
-        NICOLA_M(n_lya, &kp L &kp Y &kp A) // ゃ
-        NICOLA_M(n_lyu, &kp L &kp Y &kp U) // ゅ
-        NICOLA_M(n_lyo, &kp L &kp Y &kp O) // ょ
-        
-        // レイヤー切り替え用
-        NICOLA_M(to_kana, &to 1 &kp LANG1)
-        NICOLA_M(to_alpha, &to 0 &kp LANG2)
-        //Nicola END
-
-    };
-
-    behaviors {
-        lt_to_layer_0: lt_to_layer_0 {
-            compatible = "zmk,behavior-hold-tap";
-            label = "LAYER_TAP_TO_0";
-            bindings = <&mo>, <&to_layer_0>;
-
-            #binding-cells = <2>;
-            tapping-term-ms = <200>;
-        };
-
-        encoder_msc_down_up: encoder_msc_down_up {
-           compatible = "zmk,behavior-sensor-rotate";
-           label = "ENCODER_MSC_DOWN_UP";
-           #sensor-binding-cells = <0>;
-           bindings = <&msc SCRL_DOWN>, <&msc SCRL_UP>;
-           tap-ms = <20>;
-       };
-
     };
 
     /*Key position map for combos
@@ -193,6 +82,7 @@
 */
     combos {
         compatible = "zmk,combos";
+        #include combo_nicola.keymap
 
         tab {
             bindings = <&kp TAB>;
@@ -231,66 +121,7 @@
             bindings = <&to_alpha>;
         };
 
-        //Nicola Shift input Left thumb
-        COMBO_NICOLA(la, &n_la, 0 38, 100) //ぁ
-        COMBO_NICOLA(e, &n_e, 1 38, 100) //え
-        COMBO_NICOLA(ri, &n_ri, 2 38, 100) //り
-        COMBO_NICOLA(lya, &n_lya, 3 38, 100) //ゃ
-        COMBO_NICOLA(re, &n_re, 4 38, 100) //れ
-        COMBO_NICOLA(pa, &n_pa, 5 38, 100) //ぱ
-        COMBO_NICOLA(di, &n_di, 6 38, 100) //ぢ
-        COMBO_NICOLA(gu, &n_gu, 7 38, 100) //ぐ
-        COMBO_NICOLA(du, &n_du, 8 38, 100) //づ
-        COMBO_NICOLA(pi, &n_pi, 9 38, 100) //ぴ
-        COMBO_NICOLA(wo, &n_wo, 10 38, 100) //を
-        COMBO_NICOLA(a, &n_a, 11 38, 100) //あ
-        COMBO_NICOLA(na, &n_na, 12 38, 100) //な
-        COMBO_NICOLA(lyu, &n_lyu, 13 38, 100) //ゅ
-        COMBO_NICOLA(mo, &n_mo, 14 38, 100) //も
-        COMBO_NICOLA(ba, &n_ba, 17 38, 100) //ば
-        COMBO_NICOLA(do, &n_do, 18 38, 100) //ど
-        COMBO_NICOLA(gi, &n_gi, 19 38, 100) //ぎ
-        COMBO_NICOLA(po, &n_po, 20 38, 100) //ぽ
-        COMBO_NICOLA(lu, &n_lu, 22 38, 100) //ぅ
-        COMBO_NICOLA(minus, &kp MINUS, 23 38, 100) //ー
-        COMBO_NICOLA(ro, &n_ro, 24 38, 100) //ろ
-        COMBO_NICOLA(ya, &n_ya, 25 38, 100) //や
-        COMBO_NICOLA(li, &n_li, 26 38, 100) //ぃ
-        COMBO_NICOLA(pu, &n_pu, 29 38, 100) //ぷ
-        COMBO_NICOLA(zo, &n_zo, 30 38, 100) //ぞ
-        COMBO_NICOLA(pe, &n_pe, 31 38, 100) //ぺ
-        COMBO_NICOLA(bo, &n_bo, 32 38, 100) //ぼ
-        COMBO_NICOLA(quot , &kp LS(SLASH), 33 38, 100) //？
 
-        //Nicola Shift input Right thumb
-        COMBO_NICOLA(ga, &n_ga, 1 41, 100) //が
-        COMBO_NICOLA(da, &n_da, 2 41, 100) //だ
-        COMBO_NICOLA(go, &n_go, 3 41, 100) //ご
-        COMBO_NICOLA(za, &n_za, 4 41, 100) //ざ
-        COMBO_NICOLA(yo, &n_yo, 5 41, 100) //よ
-        COMBO_NICOLA(ni, &n_ni, 6 41, 100) //に
-        COMBO_NICOLA(ru, &n_ru, 7 41, 100) //る
-        COMBO_NICOLA(ma, &n_ma, 8 41, 100) //ま
-        COMBO_NICOLA(le, &n_le, 9 41, 100) //ぇ
-        COMBO_NICOLA(vu, &n_vu, 10 41, 100) //ヴ
-        COMBO_NICOLA(zi, &n_zi, 11 41, 100) //じ
-        COMBO_NICOLA(de, &n_de, 12 41, 100) //で
-        COMBO_NICOLA(ge, &n_ge, 13 41, 100) //げ
-        COMBO_NICOLA(ze, &n_ze, 14 41, 100) //ぜ
-        COMBO_NICOLA(mi, &n_mi, 17 41, 100) //み
-        COMBO_NICOLA(o, &n_o, 18 41, 100) //お
-        COMBO_NICOLA(no, &n_no, 19 41, 100) //の
-        COMBO_NICOLA(lyo, &n_lyo, 20 41, 100) //ょ
-        COMBO_NICOLA(ltu, &n_ltu, 21 41, 100) //っ
-        COMBO_NICOLA(bi, &n_bi, 23 41, 100) //び
-        COMBO_NICOLA(zu, &n_zu, 24 41, 100) //ず
-        COMBO_NICOLA(bu, &n_bu, 25 41, 100) //ぶ
-        COMBO_NICOLA(be, &n_be, 26 41, 100) //べ
-        COMBO_NICOLA(nu, &n_nu, 29 41, 100) //ぬ
-        COMBO_NICOLA(yu, &n_yu, 30 41, 100) //ゆ
-        COMBO_NICOLA(mu, &n_mu, 31 41, 100) //む
-        COMBO_NICOLA(wa, &n_wa, 32 41, 100) //わ
-        COMBO_NICOLA(lo, &n_lo, 33 41, 100) //ぉ
 
     };
 

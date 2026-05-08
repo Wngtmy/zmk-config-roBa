@@ -1,0 +1,69 @@
+// シフトキー入力をコンボで実現する
+#define COMBO_NICOLA(c_name, c_bindings, c_keypos, c_timeout) \
+    combo_##c_name { \
+        timeout-ms = <c_timeout>; \
+        key-positions = <c_keypos>; \
+        bindings = <c_bindings>; \
+        layers = <1>; \
+    };
+
+        //Nicola Shift input Left thumb
+        COMBO_NICOLA(la, &n_la, 0 38, 100) //ぁ
+        COMBO_NICOLA(e, &n_e, 1 38, 100) //え
+        COMBO_NICOLA(ri, &n_ri, 2 38, 100) //り
+        COMBO_NICOLA(lya, &n_lya, 3 38, 100) //ゃ
+        COMBO_NICOLA(re, &n_re, 4 38, 100) //れ
+        COMBO_NICOLA(pa, &n_pa, 5 38, 100) //ぱ
+        COMBO_NICOLA(di, &n_di, 6 38, 100) //ぢ
+        COMBO_NICOLA(gu, &n_gu, 7 38, 100) //ぐ
+        COMBO_NICOLA(du, &n_du, 8 38, 100) //づ
+        COMBO_NICOLA(pi, &n_pi, 9 38, 100) //ぴ
+        COMBO_NICOLA(wo, &n_wo, 10 38, 100) //を
+        COMBO_NICOLA(a, &n_a, 11 38, 100) //あ
+        COMBO_NICOLA(na, &n_na, 12 38, 100) //な
+        COMBO_NICOLA(lyu, &n_lyu, 13 38, 100) //ゅ
+        COMBO_NICOLA(mo, &n_mo, 14 38, 100) //も
+        COMBO_NICOLA(ba, &n_ba, 17 38, 100) //ば
+        COMBO_NICOLA(do, &n_do, 18 38, 100) //ど
+        COMBO_NICOLA(gi, &n_gi, 19 38, 100) //ぎ
+        COMBO_NICOLA(po, &n_po, 20 38, 100) //ぽ
+        COMBO_NICOLA(lu, &n_lu, 22 38, 100) //ぅ
+        COMBO_NICOLA(minus, &kp MINUS, 23 38, 100) //ー
+        COMBO_NICOLA(ro, &n_ro, 24 38, 100) //ろ
+        COMBO_NICOLA(ya, &n_ya, 25 38, 100) //や
+        COMBO_NICOLA(li, &n_li, 26 38, 100) //ぃ
+        COMBO_NICOLA(pu, &n_pu, 29 38, 100) //ぷ
+        COMBO_NICOLA(zo, &n_zo, 30 38, 100) //ぞ
+        COMBO_NICOLA(pe, &n_pe, 31 38, 100) //ぺ
+        COMBO_NICOLA(bo, &n_bo, 32 38, 100) //ぼ
+        COMBO_NICOLA(quot , &kp LS(SLASH), 33 38, 100) //？
+
+        //Nicola Shift input Right thumb
+        COMBO_NICOLA(ga, &n_ga, 1 41, 100) //が
+        COMBO_NICOLA(da, &n_da, 2 41, 100) //だ
+        COMBO_NICOLA(go, &n_go, 3 41, 100) //ご
+        COMBO_NICOLA(za, &n_za, 4 41, 100) //ざ
+        COMBO_NICOLA(yo, &n_yo, 5 41, 100) //よ
+        COMBO_NICOLA(ni, &n_ni, 6 41, 100) //に
+        COMBO_NICOLA(ru, &n_ru, 7 41, 100) //る
+        COMBO_NICOLA(ma, &n_ma, 8 41, 100) //ま
+        COMBO_NICOLA(le, &n_le, 9 41, 100) //ぇ
+        COMBO_NICOLA(vu, &n_vu, 10 41, 100) //ヴ
+        COMBO_NICOLA(zi, &n_zi, 11 41, 100) //じ
+        COMBO_NICOLA(de, &n_de, 12 41, 100) //で
+        COMBO_NICOLA(ge, &n_ge, 13 41, 100) //げ
+        COMBO_NICOLA(ze, &n_ze, 14 41, 100) //ぜ
+        COMBO_NICOLA(mi, &n_mi, 17 41, 100) //み
+        COMBO_NICOLA(o, &n_o, 18 41, 100) //お
+        COMBO_NICOLA(no, &n_no, 19 41, 100) //の
+        COMBO_NICOLA(lyo, &n_lyo, 20 41, 100) //ょ
+        COMBO_NICOLA(ltu, &n_ltu, 21 41, 100) //っ
+        COMBO_NICOLA(bi, &n_bi, 23 41, 100) //び
+        COMBO_NICOLA(zu, &n_zu, 24 41, 100) //ず
+        COMBO_NICOLA(bu, &n_bu, 25 41, 100) //ぶ
+        COMBO_NICOLA(be, &n_be, 26 41, 100) //べ
+        COMBO_NICOLA(nu, &n_nu, 29 41, 100) //ぬ
+        COMBO_NICOLA(yu, &n_yu, 30 41, 100) //ゆ
+        COMBO_NICOLA(mu, &n_mu, 31 41, 100) //む
+        COMBO_NICOLA(wa, &n_wa, 32 41, 100) //わ
+        COMBO_NICOLA(lo, &n_lo, 33 41, 100) //ぉ
