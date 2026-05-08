@@ -310,8 +310,7 @@
         COMBO_NICOLA(mu, &n_mu, 31 41, 100) //む
         COMBO_NICOLA(wa, &n_wa, 32 41, 100) //わ
         COMBO_NICOLA(lo, &n_lo, 33 41, 100) //ぉ
-    
-        };
+
     };
 
     keymap {
