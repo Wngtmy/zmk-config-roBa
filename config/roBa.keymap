@@ -292,7 +292,7 @@
         COMBO_NICOLA(ma, &n_ma, 8 41, 100) //ま
         COMBO_NICOLA(le, &n_le, 9 41, 100) //ぇ
         COMBO_NICOLA(vu, &n_vu, 10 41, 100) //ヴ
-        COMBO_NICOLA(ji, &n_ji, 11 41, 100) //じ
+        COMBO_NICOLA(zi, &n_zi, 11 41, 100) //じ
         COMBO_NICOLA(de, &n_de, 12 41, 100) //で
         COMBO_NICOLA(ge, &n_ge, 13 41, 100) //げ
         COMBO_NICOLA(ze, &n_ze, 14 41, 100) //ぜ
