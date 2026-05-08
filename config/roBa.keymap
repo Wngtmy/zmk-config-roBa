@@ -183,25 +183,6 @@
            tap-ms = <20>;
        };
 
-       //Nicola
-       ltq: layer_tap_quick {
-            compatible = "zmk,behavior-hold-tap";
-            #binding-cells = <2>;
-            tapping-term-ms = <100>;
-            quick-tap-ms = <150>; // 押しっぱなしでのレイヤー維持を許容
-            flavor = "hold-preferred";
-            bindings = <&mo>, <&kp>;
-        };
-
-        // Define new hold-tap: tap=macro, hold=layer
-        lt_macro: layer_tap_macro {
-            compatible = "zmk,behavior-hold-tap";
-            #binding-cells = <2>;
-            flavor = "tap-preferred";
-            tapping-term-ms = <200>;
-            bindings = <&mo>, <&macro_tap>; // Hold=Layer, Tap=Macro
-        };
-        //Nicola END
     };
 
     /*Key position map for combos
@@ -319,7 +300,7 @@
         default_layer {
             bindings = <
 &kp Q             &kp W         &kp E         &kp R                        &kp T                                                              &kp Y        &kp U  &kp I      &kp O    &kp P
-&kp A             &kp S         &kp D         &kp F                        &kp G                 &kp LS(LG(S))               &kp LC(LA(DEL))  &kp H        &kp J  &lt 8 K    &kp L    &mt RCTRL SEMICOLON
+&mt LCTRL A       &kp S         &kp D         &kp F                        &kp G                 &kp LS(LG(S))               &kp LC(LA(DEL))  &kp H        &kp J  &lt 8 K    &kp L    &mt RCTRL SEMICOLON
 &kp Z             &kp X         &kp C         &kp V                        &kp B                 &lt 9 LC(Y)                 &kp DEL          &kp N        &kp M  &kp COMMA  &kp DOT  &kp SLASH
 &kp LCTRL         &kp LEFT_WIN  &kp LEFT_ALT  &lt_to_layer_0 5 LANG2       &mt LEFT_SHIFT SPACE  &lt_to_layer_0 6 LANG1      &lt 6 BACKSPACE  &lt 6 ENTER                             &kp NON_US_BACKSLASH
             >;
@@ -329,10 +310,10 @@
 
         NICOLA {
             bindings = <
-&kp DOT                  &n_ka      &n_ta      &n_ko     &n_sa                                      &n_ra       &n_ti     &n_ku    &n_tu    &kp COMMA
-&n_u                     &n_si      &n_te      &n_ke     &n_se         &trans            &trans     &n_ha       &n_to     &n_ki    &n_i     &n_nn
-&kp DOT                  &n_hi      &n_su      &n_hu     &n_he         &trans            &trans     &n_me       &n_so     &n_ne    &n_ho    &kp SLASH
-&lt_to_layer_0 0 LCTRL   &trans     &trans     &trans    &kp SPACE     &trans            &trans     &kp ENTER                               &lt_to_layer_0 0 LCTRL
+&kp DOT     &n_ka      &n_ta      &n_ko     &n_sa                                      &n_ra       &n_ti     &n_ku    &n_tu    &kp COMMA
+&n_u        &n_si      &n_te      &n_ke     &n_se         &trans            &trans     &n_ha       &n_to     &n_ki    &n_i     &n_nn
+&kp DOT     &n_hi      &n_su      &n_hu     &n_he         &trans            &trans     &n_me       &n_so     &n_ne    &n_ho    &kp SLASH
+&mo 0       &trans     &trans     &trans    &kp SPACE     &trans            &trans     &kp ENTER                               &mo 0
             >;
 
             sensor-bindings = <&encoder_msc_down_up>;
