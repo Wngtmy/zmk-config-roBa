@@ -308,7 +308,7 @@
         COMBO_NICOLA(nu, &n_nu, 29 41, 100) //ぬ
         COMBO_NICOLA(yu, &n_yu, 30 41, 100) //ゆ
         COMBO_NICOLA(mu, &n_mu, 31 41, 100) //む
-        COMBO_NICOLA(wo, &n_wo, 32 41, 100) //わ
+        COMBO_NICOLA(wa, &n_wa, 32 41, 100) //わ
         COMBO_NICOLA(lo, &n_lo, 33 41, 100) //ぉ
     
         };
