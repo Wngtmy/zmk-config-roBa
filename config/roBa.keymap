@@ -49,7 +49,7 @@
     };
 
     macros {
-        #include <macro.dtsi>
+        #include "macro.dtsi"
         
         to_layer_0: to_layer_0 {
             compatible = "zmk,behavior-macro-one-param";
@@ -82,7 +82,7 @@
 */
     combos {
         compatible = "zmk,combos";
-        #include <combo_nicola.keymap>
+        #include "combo_nicola.keymap"
 
         tab {
             bindings = <&kp TAB>;
