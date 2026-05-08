@@ -123,7 +123,7 @@
         COMBO_NICOLA(pu, &n_pu, 38 29, 100) //ぷ
         COMBO_NICOLA(zo, &n_zo, 38 30, 100) //ぞ
         COMBO_NICOLA(pe, &n_pe, 38 31, 100) //ぺ
-        COMBO_NICOLA(po, &n_po, 38 32, 100) //ぼ
+        COMBO_NICOLA(bo, &n_bo, 38 32, 100) //ぼ
         COMBO_NICOLA(quot , &kp LS(SLASH), 38 33, 100) //？
 
     　　//Nicola Shift input Right thumb
