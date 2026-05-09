@@ -7,7 +7,12 @@
 
 &mt {
     flavor = "balanced";
-    quick-tap-ms = <0>;
+    quick-tap-ms = <190>;
+};
+
+&lt {
+    flavor = "balanced";
+    quick-tap-ms = <190>;
 };
 
 &trackball {
@@ -27,10 +32,6 @@
     // };
 };
 
-&lt {
-    flavor = "balanced";
-    quick-tap-ms = <190>;
-};
 
 / {
     behaviors {
