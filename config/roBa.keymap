@@ -150,8 +150,8 @@
             bindings = <
 &kp DOT     &n_ka      &n_ta      &n_ko     &n_sa                                      &n_ra       &n_ti     &n_ku    &n_tu    &kp COMMA
 &n_u        &n_si      &n_te      &n_ke     &n_se         &trans            &trans     &n_ha       &n_to     &n_ki    &n_i     &n_nn
-&kp DOT     &n_hi      &n_su      &n_hu     &n_he         &trans            &trans     &n_me       &n_so     &n_ne    &n_ho    &kp SLASH
-&mo 10      &trans     &trans     &trans    &kp SPACE     &trans            &trans     &kp ENTER                               &mo 10
+&kp DOT     &n_hi      &n_su      &n_hu     &n_he         &trans            &mo 10     &n_me       &n_so     &n_ne    &n_ho    &kp SLASH
+&trans      &trans     &trans     &trans    &kp SPACE     &trans            &trans     &kp ENTER                               &trans
             >;
 
             sensor-bindings = <&encoder_msc_down_up>;
@@ -233,9 +233,9 @@
 
         Nicola_Alpha {
             bindings = <
-&kp Q   &kp W   &kp E   &kp R   &kp T                       &kp Y        &kp U  &kp I      &kp O    &kp P
-&kp A   &kp S   &kp D   &kp F   &kp G   &trans      &trans  &kp H        &kp J  &kp K      &kp L    &kp SEMICOLON
-&kp Z   &kp X   &kp C   &kp V   &kp B   &trans      &trans  &kp N        &kp M  &kp COMMA  &kp DOT  &kp SLASH
+&kp LS(Q)   &kp LS(W)   &kp LS(E)   &kp LS(R)  &kp LS(T)                       &kp LS(Y)        &kp LS(U)  &kp LS(I)      &kp LS(O)    &kp LS(P)
+&kp LS(A)   &kp LS(S)   &kp LS(D)   &kp LS(F)   &kp LS(G)   &trans      &trans  &kp LS(H)        &kp LS(J)  &kp LS(K)      &kp LS(L)    &kp SEMICOLON
+&kp LS(Z)   &kp LS(X)   &kp LS(C)   &kp LS(V)   &kp LS(B)   &trans      &trans  &kp LS(N)        &kp LS(M)  &kp COMMA  &kp DOT  &kp SLASH
 &trans  &trans  &trans  &trans  &trans  &trans      &trans  &trans                                  &trans
             >;
         };
